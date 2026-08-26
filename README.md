@@ -1,0 +1,1 @@
+NSosyal InsightAI - Explainable, Turkish-native AI trust layer for social platforms - transparent feed ranking (Feed DNA), well-being-aware pacing, and fair creator monetization. Built for TEKNOFEST 2026 NSosyal Innovation Competition
