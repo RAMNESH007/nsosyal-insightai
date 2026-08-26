@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { Home, Bell, Mail, Bookmark, List, Hash, Radio, Activity, Settings, PlusCircle, Search, MessageSquare } from 'lucide-react';
+import { Home, Bell, Mail, Bookmark, List, Hash, Radio, Activity, Settings, PlusCircle, Search } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Layout({ children }: { children: ReactNode }) {

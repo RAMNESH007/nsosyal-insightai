@@ -1,4 +1,4 @@
-import { BarChart2, Star, TrendingUp, DollarSign, Users, Sparkles, PlusCircle } from 'lucide-react';
+import { TrendingUp, Sparkles } from 'lucide-react';
 
 export default function CreatorLens() {
   return (
