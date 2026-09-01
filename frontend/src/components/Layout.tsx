@@ -83,15 +83,31 @@ export default function Layout({ children }: { children: ReactNode }) {
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-lg font-extrabold tracking-wide">NSOSYAL</span>
-                <span className="bg-blue-500/20 text-blue-400 text-[10px] px-1.5 py-0.5 rounded font-bold border border-blue-500/30">AI</span>
+                <span className="bg-blue-500/20 text-blue-400 text-[10px] px-1.5 py-0.5 rounded font-bold border border-blue-500/30">BETA</span>
               </div>
               <p className="text-[10px] text-gray-400 font-medium tracking-wider">InsightAI Platform</p>
             </div>
           </Link>
         </div>
         
+        {/* Auth Action Buttons matching Image 1 */}
+        <div className="px-3 pt-3 pb-1 space-y-2">
+          <Link
+            to="/login"
+            className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-2xl transition-all shadow-md shadow-blue-600/20 text-center block text-sm active:scale-[0.98]"
+          >
+            Giriş Yap
+          </Link>
+          <Link
+            to="/register"
+            className="w-full bg-[#161F30] hover:bg-[#1e293b] text-gray-200 border border-gray-700/80 font-semibold py-2.5 rounded-2xl transition-colors text-center block text-sm active:scale-[0.98]"
+          >
+            Kayıt Ol
+          </Link>
+        </div>
+
         {/* Navigation Sections */}
-        <div className="flex-1 px-3 py-4 space-y-6">
+        <div className="flex-1 px-3 py-3 space-y-6">
           
           {/* Main Navigation */}
           <div>

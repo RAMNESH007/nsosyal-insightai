@@ -66,7 +66,23 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Feed Post */}
+          {/* Quick Category Chips */}
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+            {['Tümü', 'Bilim & Teknoloji', 'TEKNOFEST 2026', 'Haberler', 'Eğitim', 'Yapay Zeka'].map((cat, i) => (
+              <button
+                key={cat}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                  i === 0 
+                    ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/30' 
+                    : 'bg-[#111827] text-gray-400 hover:text-white border border-[#1e293b]'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Feed Post 1 - AI Quantum Chip */}
           <div className="bg-[#111827] rounded-2xl p-4 sm:p-5 border border-[#1e293b] shadow-sm">
             <div className="flex justify-between items-start mb-3">
               <div className="flex gap-3">
@@ -79,26 +95,89 @@ export default function Home() {
                      <span className="text-gray-500 text-xs sm:text-sm">@teknolojigundemi · 2s</span>
                    </div>
                    <p className="text-gray-300 mt-1 text-sm leading-relaxed">
-                     Yapay zeka destekli yeni çipler, mobil cihazlarda devrim yaratacak.
+                     Yapay zeka destekli yeni nöral işlemciler, mobil cihazlarda ve yerli otomobillerde devrim yaratacak. Yeni mimari enerji tasarrufunu %40 artırıyor.
                    </p>
-                   <p className="text-primary text-sm mt-1 font-medium">#teknoloji #yapayzeka</p>
+                   <p className="text-primary text-sm mt-1 font-medium">#teknoloji #yapayzeka #yerliçip</p>
                  </div>
               </div>
               <button className="text-gray-500 hover:text-white p-1 rounded-lg hover:bg-gray-800 transition-colors"><MoreHorizontal size={20} /></button>
             </div>
 
-            <div className="rounded-xl overflow-hidden mt-3 h-64 sm:h-72 bg-gray-800/80 border border-[#1e293b]">
-               {/* Placeholder for AI chip image */}
-               <div className="w-full h-full bg-gradient-to-br from-blue-950/40 via-slate-900 to-indigo-950/40 flex flex-col items-center justify-center text-gray-500 gap-2">
-                  <Sparkles size={28} className="text-blue-400/50" />
-                  <span className="text-xs text-gray-400">[Görsel / AI Çip Mimarisi]</span>
-               </div>
+            <div className="rounded-2xl overflow-hidden mt-3 aspect-video bg-gray-900 border border-[#1e293b]">
+               <img src="/ai_chip.jpg" alt="AI Chip Architecture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
 
             <div className="flex justify-between items-center mt-4 text-gray-400 pt-2 border-t border-gray-800/60">
               <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><MessageCircle size={18} /> 128</button>
               <button className="flex items-center gap-2 hover:text-green-500 transition-colors text-sm"><Share2 size={18} /> 256</button>
               <button className="flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors text-sm"><Heart size={18} fill="currentColor" /> 1.2K</button>
+              <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><Bookmark size={18} /></button>
+            </div>
+          </div>
+
+          {/* Feed Post 2 - TEKNOFEST Aerospace */}
+          <div className="bg-[#111827] rounded-2xl p-4 sm:p-5 border border-[#1e293b] shadow-sm">
+            <div className="flex justify-between items-start mb-3">
+              <div className="flex gap-3">
+                 <div className="w-11 h-11 bg-red-600/20 text-red-400 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                   TF
+                 </div>
+                 <div>
+                   <div className="flex items-center gap-2">
+                     <span className="font-bold text-gray-100">TEKNOFEST Havacılık & Uzay</span>
+                     <span className="text-blue-400 text-xs">✓</span>
+                     <span className="text-gray-500 text-xs sm:text-sm">@teknofest · 4s</span>
+                   </div>
+                   <p className="text-gray-300 mt-1 text-sm leading-relaxed">
+                     Milli kanatlarımız İstanbul Boğazı semalarında! Otonom uçuş algoritmasıyla senkronize edilen İHA filomuz gösterisini başarıyla tamamladı. 🇹🇷
+                   </p>
+                   <p className="text-primary text-sm mt-1 font-medium">#TEKNOFEST2026 #MilliTeknoloji #Havacılık</p>
+                 </div>
+              </div>
+              <button className="text-gray-500 hover:text-white p-1 rounded-lg hover:bg-gray-800 transition-colors"><MoreHorizontal size={20} /></button>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden mt-3 aspect-video bg-gray-900 border border-[#1e293b]">
+               <img src="/teknofest.jpg" alt="TEKNOFEST Drone Flight" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+
+            <div className="flex justify-between items-center mt-4 text-gray-400 pt-2 border-t border-gray-800/60">
+              <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><MessageCircle size={18} /> 482</button>
+              <button className="flex items-center gap-2 hover:text-green-500 transition-colors text-sm"><Share2 size={18} /> 1.1K</button>
+              <button className="flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors text-sm"><Heart size={18} fill="currentColor" /> 5.4K</button>
+              <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><Bookmark size={18} /></button>
+            </div>
+          </div>
+
+          {/* Feed Post 3 - Robotics & Lab */}
+          <div className="bg-[#111827] rounded-2xl p-4 sm:p-5 border border-[#1e293b] shadow-sm">
+            <div className="flex justify-between items-start mb-3">
+              <div className="flex gap-3">
+                 <div className="w-11 h-11 bg-purple-600/20 text-purple-400 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                   BT
+                 </div>
+                 <div>
+                   <div className="flex items-center gap-2">
+                     <span className="font-bold text-gray-100">Bilim ve İnovasyon Kulübü</span>
+                     <span className="text-gray-500 text-xs sm:text-sm">@bilim.ve.ozel · 6s</span>
+                   </div>
+                   <p className="text-gray-300 mt-1 text-sm leading-relaxed">
+                     İnsansı robot teknolojilerinde yerli kontrol algoritmaları ve Türkçe konuşma sentezi testleri laboratuvar ortamında başarıyla tamamlandı.
+                   </p>
+                   <p className="text-primary text-sm mt-1 font-medium">#robotik #bilim #yapayzeka</p>
+                 </div>
+              </div>
+              <button className="text-gray-500 hover:text-white p-1 rounded-lg hover:bg-gray-800 transition-colors"><MoreHorizontal size={20} /></button>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden mt-3 aspect-video bg-gray-900 border border-[#1e293b]">
+               <img src="/robotics.jpg" alt="Robotics Innovation Lab" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+
+            <div className="flex justify-between items-center mt-4 text-gray-400 pt-2 border-t border-gray-800/60">
+              <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><MessageCircle size={18} /> 214</button>
+              <button className="flex items-center gap-2 hover:text-green-500 transition-colors text-sm"><Share2 size={18} /> 430</button>
+              <button className="flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors text-sm"><Heart size={18} fill="currentColor" /> 2.8K</button>
               <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><Bookmark size={18} /></button>
             </div>
           </div>
