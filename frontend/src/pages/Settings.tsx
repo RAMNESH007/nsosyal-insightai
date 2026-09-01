@@ -1,97 +1,216 @@
-import { Settings as SettingsIcon, Sliders, Shield, Bell } from 'lucide-react';
+import { useState } from 'react';
+import { Settings as SettingsIcon, Sliders, Shield, Bell, CheckCircle2, User, Eye, Sparkles } from 'lucide-react';
 
 export default function Settings() {
+  const [techWeight, setTechWeight] = useState(80);
+  const [funWeight, setFunWeight] = useState(60);
+  const [sportWeight, setSportWeight] = useState(50);
+  const [newsWeight, setNewsWeight] = useState(40);
+  const [eduWeight, setEduWeight] = useState(70);
+
+  const [negativePref, setNegativePref] = useState<'more' | 'balanced' | 'less'>('balanced');
+  const [echoChamberBreaker, setEchoChamberBreaker] = useState(true);
+  const [savedNotice, setSavedNotice] = useState(false);
+
+  const handleSave = () => {
+    setSavedNotice(true);
+    setTimeout(() => setSavedNotice(false), 3000);
+  };
+
   return (
-    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-background p-6 lg:p-10 max-w-4xl mx-auto w-full">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white flex items-center gap-2">
-          <SettingsIcon className="text-primary" /> Ayarlar
-        </h1>
-        <p className="text-gray-400 text-sm mt-1">İçerik tercihlerinizi ve hesap güvenliğinizi yönetin.</p>
+    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-[#0B0F19] p-6 lg:p-10 max-w-5xl mx-auto w-full">
+      
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+            <SettingsIcon className="text-blue-400" size={24} /> Ayarlar ve Algoritmik Tercihler
+          </h1>
+          <p className="text-gray-400 text-sm mt-1">
+            İçerik akış ağırlıklarınızı, güvenlik filtrelerinizi ve duygu filtrelerinizi manuel kontrol edin.
+          </p>
+        </div>
+
+        {savedNotice && (
+          <div className="flex items-center gap-2 bg-green-500/20 text-green-400 border border-green-500/40 px-3 py-1.5 rounded-xl text-xs font-semibold animate-fade-in">
+            <CheckCircle2 size={14} /> Tercihler Başarıyla Kaydedildi
+          </div>
+        )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        {/* Sidebar settings nav */}
-        <div className="md:col-span-1 space-y-2">
-           <button className="w-full flex items-center gap-3 bg-[#1F2937] text-white px-4 py-3 rounded-lg text-sm font-medium">
-             <Sliders size={16} /> İçerik Tercihleri
-           </button>
-           <button className="w-full flex items-center gap-3 text-gray-400 hover:bg-[#111827] px-4 py-3 rounded-lg text-sm transition-colors">
-             <Shield size={16} /> Gizlilik
-           </button>
-           <button className="w-full flex items-center gap-3 text-gray-400 hover:bg-[#111827] px-4 py-3 rounded-lg text-sm transition-colors">
-             <Bell size={16} /> Bildirimler
-           </button>
+        {/* Left Side Navigation */}
+        <div className="lg:col-span-4 space-y-2">
+          <button className="w-full flex items-center gap-3 bg-blue-600/20 border border-blue-500/30 text-blue-400 font-semibold px-4 py-3 rounded-2xl text-sm text-left">
+            <Sliders size={18} /> İçerik Tercihleri
+          </button>
+          <button className="w-full flex items-center gap-3 bg-[#111827] hover:bg-[#161F30] border border-[#1e293b] text-gray-400 hover:text-white px-4 py-3 rounded-2xl text-sm text-left transition-colors">
+            <Shield size={18} /> Güvenlik & Gizlilik
+          </button>
+          <button className="w-full flex items-center gap-3 bg-[#111827] hover:bg-[#161F30] border border-[#1e293b] text-gray-400 hover:text-white px-4 py-3 rounded-2xl text-sm text-left transition-colors">
+            <Bell size={18} /> Bildirim Ayarları
+          </button>
         </div>
 
-        {/* Settings Content */}
-        <div className="md:col-span-3 space-y-6">
-           <div className="bg-[#111827] border border-[#1e293b] rounded-xl p-6">
-             <h2 className="text-lg font-bold text-white mb-6">İçerik DNA'nızı Şekillendirin</h2>
-             
-             <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <label className="text-sm font-medium text-gray-300">Teknoloji & Bilim</label>
-                    <span className="text-sm text-primary">Yüksek</span>
-                  </div>
-                  <input type="range" min="0" max="100" defaultValue="80" className="w-full accent-primary" />
-                </div>
-                
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <label className="text-sm font-medium text-gray-300">Eğlence & Mizah</label>
-                    <span className="text-sm text-primary">Orta</span>
-                  </div>
-                  <input type="range" min="0" max="100" defaultValue="50" className="w-full accent-primary" />
-                </div>
+        {/* Right Side Settings Form */}
+        <div className="lg:col-span-8 space-y-6">
+          
+          {/* Content Sliders matching Screen 7 */}
+          <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-6 sm:p-7">
+            <h3 className="font-bold text-white text-base mb-6 flex items-center gap-2">
+              <Sliders className="text-blue-400" size={18} /> İçerik Tercihleriniz (Kategori Ağırlıkları)
+            </h3>
 
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <label className="text-sm font-medium text-gray-300">Siyaset & Gündem</label>
-                    <span className="text-sm text-gray-500">Düşük</span>
-                  </div>
-                  <input type="range" min="0" max="100" defaultValue="20" className="w-full accent-primary" />
+            <div className="space-y-6">
+              
+              {/* Teknoloji */}
+              <div>
+                <div className="flex justify-between text-xs font-semibold mb-2">
+                  <span className="text-gray-300">Teknoloji & Yapay Zeka</span>
+                  <span className="text-blue-400 font-bold">%{techWeight}</span>
                 </div>
-             </div>
-           </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={techWeight}
+                  onChange={(e) => setTechWeight(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+              </div>
 
-           <div className="bg-[#111827] border border-[#1e293b] rounded-xl p-6">
-             <h2 className="text-lg font-bold text-white mb-6">Algoritma Kontrolleri</h2>
-             
-             <div className="space-y-4">
-               <label className="flex items-center justify-between cursor-pointer">
-                 <div>
-                   <h3 className="text-gray-300 font-medium">Yankı Odası Kırıcı (Echo Chamber Breaker)</h3>
-                   <p className="text-xs text-gray-500 mt-1">Farklı görüşlere sahip içerikleri ara sıra akışınıza dahil eder.</p>
-                 </div>
-                 <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                    <input type="checkbox" name="toggle" id="toggle1" defaultChecked className="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                    <label htmlFor="toggle1" className="toggle-label block overflow-hidden h-5 rounded-full bg-primary cursor-pointer"></label>
-                 </div>
-               </label>
-               <hr className="border-gray-800" />
-               <label className="flex items-center justify-between cursor-pointer">
-                 <div>
-                   <h3 className="text-gray-300 font-medium">Negatif İçerik Filtresi</h3>
-                   <p className="text-xs text-gray-500 mt-1">Stres yaratan veya tetikleyici haberciliği azaltır.</p>
-                 </div>
-                 <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                    <input type="checkbox" name="toggle" id="toggle2" className="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                    <label htmlFor="toggle2" className="toggle-label block overflow-hidden h-5 rounded-full bg-gray-600 cursor-pointer"></label>
-                 </div>
-               </label>
-             </div>
-           </div>
+              {/* Eğlence */}
+              <div>
+                <div className="flex justify-between text-xs font-semibold mb-2">
+                  <span className="text-gray-300">Eğlence & Mizah</span>
+                  <span className="text-blue-400 font-bold">%{funWeight}</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={funWeight}
+                  onChange={(e) => setFunWeight(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+              </div>
 
-           <div className="flex justify-end">
-             <button className="bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors font-medium">
-               Değişiklikleri Kaydet
-             </button>
-           </div>
+              {/* Spor */}
+              <div>
+                <div className="flex justify-between text-xs font-semibold mb-2">
+                  <span className="text-gray-300">Spor & E-Spor</span>
+                  <span className="text-blue-400 font-bold">%{sportWeight}</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={sportWeight}
+                  onChange={(e) => setSportWeight(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+              </div>
+
+              {/* Haber */}
+              <div>
+                <div className="flex justify-between text-xs font-semibold mb-2">
+                  <span className="text-gray-300">Haber & Güncel Gelişmeler</span>
+                  <span className="text-blue-400 font-bold">%{newsWeight}</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={newsWeight}
+                  onChange={(e) => setNewsWeight(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+              </div>
+
+              {/* Eğitim */}
+              <div>
+                <div className="flex justify-between text-xs font-semibold mb-2">
+                  <span className="text-gray-300">Eğitim & Bilim</span>
+                  <span className="text-blue-400 font-bold">%{eduWeight}</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={eduWeight}
+                  onChange={(e) => setEduWeight(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+              </div>
+
+            </div>
+          </div>
+
+          {/* Negatif İçerik & Yankı Odası Kontrolleri */}
+          <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-6 sm:p-7 space-y-6">
+            
+            {/* Negatif İçerik */}
+            <div>
+              <h4 className="text-sm font-bold text-white mb-2">Negatif İçerik Tercihi</h4>
+              <p className="text-xs text-gray-400 mb-3">
+                Kriz, felaket veya kutuplaştırıcı haberlerin akışınızdaki görünürlüğü.
+              </p>
+
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { id: 'more', label: 'Daha Fazla Göster' },
+                  { id: 'balanced', label: 'Dengeli Göster' },
+                  { id: 'less', label: 'Daha Az Göster' },
+                ].map((btn) => (
+                  <button
+                    key={btn.id}
+                    type="button"
+                    onClick={() => setNegativePref(btn.id as any)}
+                    className={`py-2.5 px-3 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                      negativePref === btn.id
+                        ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
+                        : 'bg-[#161F30] text-gray-400 hover:text-white border border-gray-800'
+                    }`}
+                  >
+                    {btn.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Echo Chamber Breaker Toggle */}
+            <div className="pt-4 border-t border-gray-800 flex items-center justify-between">
+              <div className="pr-4">
+                <h4 className="text-sm font-bold text-white">Yankı Odası Kırıcı (Echo Chamber Breaker)</h4>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  Farklı görüş ve perspektiflerden kaliteli içerikleri ölçülü olarak akışınıza dahil eder.
+                </p>
+              </div>
+              <input
+                type="checkbox"
+                checked={echoChamberBreaker}
+                onChange={(e) => setEchoChamberBreaker(e.target.checked)}
+                className="w-5 h-5 accent-blue-600 rounded cursor-pointer flex-shrink-0"
+              />
+            </div>
+
+          </div>
+
+          {/* Save Button */}
+          <div className="flex justify-end">
+            <button
+              onClick={handleSave}
+              className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-8 py-3 rounded-xl transition-all shadow-lg shadow-blue-600/30 active:scale-98"
+            >
+              Değişiklikleri Kaydet
+            </button>
+          </div>
+
         </div>
+
       </div>
+
     </div>
   );
 }

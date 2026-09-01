@@ -109,121 +109,120 @@ export default function Home() {
       <div className="w-[370px] 2xl:w-[410px] bg-[#0B0F19] p-4 2xl:p-5 flex flex-col gap-4 overflow-y-auto scrollbar-minimal hidden lg:flex flex-shrink-0 h-full border-l border-[#1e293b]/50">
         
         {/* Neden bunu görüyorum? */}
-        <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-4">
-          <div className="flex items-center gap-2 mb-4 text-gray-300">
-            <span className="font-semibold">Neden bunu görüyorum?</span>
-            <Sparkles size={16} className="text-gray-500" />
+        <div className="bg-[#111827] rounded-2xl border border-[#1e293b] p-4.5 shadow-sm">
+          <div className="flex items-center justify-between mb-4 text-gray-300">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-white text-sm">Neden bunu görüyorum?</span>
+              <Sparkles size={15} className="text-blue-400" />
+            </div>
+            <Link to="/why" className="text-[11px] text-blue-400 hover:underline font-medium">Detaylar</Link>
           </div>
 
-          <div className="space-y-4 text-sm">
+          <div className="space-y-3 text-xs">
             <div>
                <div className="flex justify-between mb-1">
-                 <span className="flex items-center gap-2 text-gray-400"><div className="w-2 h-2 rounded-full bg-blue-500"></div> İlgi Alanı Eşleşmesi</span>
-                 <span className="font-medium">42%</span>
+                 <span className="flex items-center gap-2 text-gray-300 font-medium"><div className="w-2 h-2 rounded-full bg-blue-500"></div> İlgi Alanı Eşleşmesi</span>
+                 <span className="font-bold text-white">42%</span>
                </div>
-               <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+               <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                  <div className="h-full bg-blue-500 rounded-full" style={{ width: '42%' }}></div>
                </div>
             </div>
             <div>
                <div className="flex justify-between mb-1">
-                 <span className="flex items-center gap-2 text-gray-400"><div className="w-2 h-2 rounded-full bg-green-500"></div> Güncellik</span>
-                 <span className="font-medium">28%</span>
+                 <span className="flex items-center gap-2 text-gray-300 font-medium"><div className="w-2 h-2 rounded-full bg-green-500"></div> Güncellik</span>
+                 <span className="font-bold text-white">28%</span>
                </div>
-               <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+               <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                  <div className="h-full bg-green-500 rounded-full" style={{ width: '28%' }}></div>
                </div>
             </div>
             <div>
                <div className="flex justify-between mb-1">
-                 <span className="flex items-center gap-2 text-gray-400"><div className="w-2 h-2 rounded-full bg-purple-500"></div> Sosyal Yakınlık</span>
-                 <span className="font-medium">15%</span>
+                 <span className="flex items-center gap-2 text-gray-300 font-medium"><div className="w-2 h-2 rounded-full bg-purple-500"></div> Sosyal Yakınlık</span>
+                 <span className="font-bold text-white">15%</span>
                </div>
-               <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+               <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                  <div className="h-full bg-purple-500 rounded-full" style={{ width: '15%' }}></div>
                </div>
             </div>
             <div>
                <div className="flex justify-between mb-1">
-                 <span className="flex items-center gap-2 text-gray-400"><div className="w-2 h-2 rounded-full bg-yellow-500"></div> Kalite ve Güvenlik</span>
-                 <span className="font-medium">15%</span>
+                 <span className="flex items-center gap-2 text-gray-300 font-medium"><div className="w-2 h-2 rounded-full bg-yellow-500"></div> Kalite ve Güvenlik</span>
+                 <span className="font-bold text-white">15%</span>
                </div>
-               <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+               <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                  <div className="h-full bg-yellow-500 rounded-full" style={{ width: '15%' }}></div>
                </div>
             </div>
           </div>
 
-          <p className="text-xs text-gray-400 mt-4 leading-relaxed">
-            Teknoloji ile ilgili içeriklere sık etkileşimde bulunduğun için bunu görüyorsun.
+          <p className="text-[11px] text-gray-400 mt-3.5 leading-relaxed bg-[#161F30] p-2.5 rounded-xl border border-gray-800/80">
+            Teknoloji ile ilgili içeriklere sık etkileşimde bulunduğun için bu gönderi önceliklendirildi.
           </p>
 
-          <div className="flex gap-2 mt-4">
-            <button className="flex-1 bg-[#1e293b] hover:bg-gray-700 text-white py-2 rounded-lg text-xs font-medium transition-colors">Daha az göster</button>
-            <button className="flex-1 bg-primary hover:bg-blue-600 text-white py-2 rounded-lg text-xs font-medium transition-colors">Daha fazla göster</button>
+          <div className="flex gap-2 mt-3.5">
+            <Link to="/why" className="flex-1 text-center bg-[#1e293b] hover:bg-gray-700 text-gray-200 py-2 rounded-xl text-xs font-semibold transition-colors">Daha az göster</Link>
+            <Link to="/why" className="flex-1 text-center bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-semibold transition-colors shadow-md shadow-blue-600/20">Daha fazla göster</Link>
           </div>
         </div>
 
         {/* Feed DNA */}
-        <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-4">
-          <div className="flex justify-between items-center mb-4">
-            <span className="font-semibold">Feed DNA</span>
-            <span className="text-primary text-xs hover:underline cursor-pointer">Tümünü Gör</span>
+        <div className="bg-[#111827] rounded-2xl border border-[#1e293b] p-4.5 shadow-sm">
+          <div className="flex justify-between items-center mb-3">
+            <span className="font-bold text-white text-sm">Feed DNA</span>
+            <Link to="/dna" className="text-blue-400 text-xs hover:underline font-semibold cursor-pointer">Tümünü Gör</Link>
           </div>
           
           <div className="flex items-center gap-4">
             <FeedDNAChart />
 
-            <div className="flex-1 space-y-2 text-xs">
-              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div><span className="flex-1 text-gray-400">Teknoloji</span><span className="font-medium">32%</span></div>
-              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500"></div><span className="flex-1 text-gray-400">Eğlence</span><span className="font-medium">24%</span></div>
-              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-purple-500"></div><span className="flex-1 text-gray-400">Spor</span><span className="font-medium">17%</span></div>
-              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-yellow-500"></div><span className="flex-1 text-gray-400">Haber</span><span className="font-medium">13%</span></div>
-              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-cyan-500"></div><span className="flex-1 text-gray-400">Eğitim</span><span className="font-medium">9%</span></div>
-              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-gray-500"></div><span className="flex-1 text-gray-400">Diğer</span><span className="font-medium">5%</span></div>
+            <div className="flex-1 space-y-1.5 text-[11px]">
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div><span className="flex-1 text-gray-300">Teknoloji</span><span className="font-bold text-white">32%</span></div>
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500"></div><span className="flex-1 text-gray-300">Eğlence</span><span className="font-bold text-white">24%</span></div>
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-purple-500"></div><span className="flex-1 text-gray-300">Spor</span><span className="font-bold text-white">17%</span></div>
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-yellow-500"></div><span className="flex-1 text-gray-300">Haber</span><span className="font-bold text-white">13%</span></div>
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-cyan-500"></div><span className="flex-1 text-gray-300">Eğitim</span><span className="font-bold text-white">9%</span></div>
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-gray-500"></div><span className="flex-1 text-gray-300">Diğer</span><span className="font-bold text-white">5%</span></div>
             </div>
           </div>
         </div>
 
         {/* Aya Asistan */}
-        <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-4 flex flex-col">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="font-semibold">Aya Asistan</span>
-            <span className="bg-primary/20 text-primary text-[10px] px-1.5 py-0.5 rounded font-bold">BETA</span>
+        <div className="bg-[#111827] rounded-2xl border border-[#1e293b] p-4.5 flex flex-col shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-white text-sm">Aya Asistan</span>
+              <span className="bg-blue-500/20 text-blue-400 text-[10px] px-1.5 py-0.5 rounded font-bold border border-blue-500/30">BETA</span>
+            </div>
+            <Link to="/aya" className="text-xs text-blue-400 hover:underline font-medium">Genişlet</Link>
           </div>
 
-          <div className="flex items-start gap-3 mb-4">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-               <span className="text-white text-xs font-bold">A</span>
+          <div className="flex items-start gap-2.5 mb-3">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center flex-shrink-0 text-xs font-bold text-white shadow-sm">
+               A
             </div>
             <div>
-              <p className="text-sm font-medium">Merhaba Ahmet! 👋</p>
-              <p className="text-xs text-gray-400 mt-1">Bugün sana nasıl yardımcı olabilirim?</p>
+              <p className="text-xs font-semibold text-white">Merhaba Ahmet! 👋</p>
+              <p className="text-[11px] text-gray-400 mt-0.5 leading-snug">Bugün akışını nasıl optimize etmek istersin?</p>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-4">
-            <button className="bg-[#1e293b] hover:bg-gray-700 text-gray-300 text-xs px-3 py-1.5 rounded-full transition-colors border border-gray-700">
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            <Link to="/why" className="bg-[#1e293b] hover:bg-gray-700 text-gray-300 text-[10px] px-2.5 py-1 rounded-full transition-colors border border-gray-700">
               Neden bunu görüyorum?
-            </button>
-            <button className="bg-[#1e293b] hover:bg-gray-700 text-gray-300 text-xs px-3 py-1.5 rounded-full transition-colors border border-gray-700">
-              Daha az negatif içerik göster
-            </button>
-            <button className="bg-[#1e293b] hover:bg-gray-700 text-gray-300 text-xs px-3 py-1.5 rounded-full transition-colors border border-gray-700">
-              Daha fazla teknoloji göster
-            </button>
+            </Link>
+            <Link to="/aya" className="bg-[#1e293b] hover:bg-gray-700 text-gray-300 text-[10px] px-2.5 py-1 rounded-full transition-colors border border-gray-700">
+              Daha az negatif içerik
+            </Link>
           </div>
 
-          <div className="relative mt-auto">
-            <input 
-              type="text" 
-              placeholder="Aya'ya bir şey sor..." 
-              className="w-full bg-[#1e293b] border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary pr-10"
-            />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 text-primary hover:text-blue-400 p-1">
-              <Send size={16} />
-            </button>
-          </div>
+          <Link to="/aya" className="relative mt-auto block">
+            <div className="w-full bg-[#1e293b] border border-gray-700 hover:border-blue-500 rounded-xl px-3 py-2 text-xs text-gray-400 transition-colors flex items-center justify-between">
+              <span>Aya'ya bir şey sor...</span>
+              <Send size={13} className="text-blue-400" />
+            </div>
+          </Link>
         </div>
 
       </div>

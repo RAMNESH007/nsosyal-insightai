@@ -1,168 +1,262 @@
-import { TrendingUp, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { 
+  TrendingUp, Sparkles, Award, Users, Eye, BarChart2, PlusCircle, 
+  DollarSign, Briefcase, ArrowUpRight, CheckCircle2, Shield 
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function CreatorLens() {
+  const [activeTab, setActiveTab] = useState<'overview' | 'score' | 'insights'>('overview');
+
+  const scoreComponents = [
+    { label: 'Kitle Kalitesi', score: 86, color: 'bg-blue-500', desc: 'Organik takipçi oranı ve sahte hesap filtreleme skoru.' },
+    { label: 'Etkileşim Kalitesi', score: 78, color: 'bg-green-500', desc: 'Kaydetme, paylaşım ve nitelikli yorum yoğunluğu.' },
+    { label: 'İçerik Kalitesi', score: 91, color: 'bg-purple-500', desc: 'Özgünlük, görüntüleme süresi ve moderasyon güveni.' },
+    { label: 'Marka Uyumu', score: 75, color: 'bg-yellow-500', desc: 'Teknoloji ve eğitim sektörüyle sektörel örtüşme.' },
+    { label: 'Kitle Tutarlılığı', score: 80, color: 'bg-cyan-500', desc: 'Zaman içindeki düzenli etkileşim istikrarı.' },
+  ];
+
   return (
-    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-background p-6 sm:p-8 max-w-7xl mx-auto w-full">
+    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-[#0B0F19] p-6 lg:p-10 max-w-7xl mx-auto w-full">
       
-      <div className="flex justify-between items-center mb-8">
+      {/* Top Dashboard Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-2">
-            <Sparkles className="text-primary" /> Creator Lens
-          </h1>
-          <p className="text-gray-400 text-sm mt-1">İçeriğinin ekonomik potansiyelini keşfet</p>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+              <Sparkles className="text-blue-400" size={24} /> Creator Dashboard & Lens
+            </h1>
+            <span className="text-[10px] bg-purple-500/20 text-purple-400 font-bold px-2 py-0.5 rounded-full border border-purple-500/30">PRO</span>
+          </div>
+          <p className="text-gray-400 text-sm mt-1">İçeriğinizin ekonomik potansiyelini, kitle kalitesini ve sponsorluk değerini keşfedin.</p>
         </div>
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-400">25 Ağu - 31 Ağu 2026</span>
+
+        <div className="flex items-center gap-3">
+          <Link 
+            to="/brand-matches"
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-blue-600/30"
+          >
+            <Briefcase size={15} /> Marka Fırsatları
+          </Link>
+          <span className="text-xs text-gray-400 bg-[#111827] px-3 py-2 rounded-xl border border-[#1e293b]">
+            Son 30 Gün
+          </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {/* Creator Economic Score */}
-        <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-6 flex flex-col justify-between">
-          <h3 className="text-gray-300 font-medium mb-4 text-center">Creator Ekonomik Skoru</h3>
-          <div className="flex items-center justify-center flex-1">
-            <div className="relative w-32 h-32">
-              <svg className="w-full h-full" viewBox="0 0 36 36">
+      {/* Top 4 Key Metric Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        
+        {/* Creator Score Quick Card */}
+        <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-5 flex items-center justify-between shadow-sm">
+          <div>
+            <p className="text-xs text-gray-400 font-medium">Creator Ekonomik Skoru</p>
+            <div className="flex items-baseline gap-1 mt-1">
+              <span className="text-3xl font-extrabold text-white">81</span>
+              <span className="text-xs text-gray-500">/100</span>
+            </div>
+            <span className="text-[11px] text-green-400 font-semibold flex items-center gap-1 mt-1">
+              <TrendingUp size={12} /> Yüksek Performans
+            </span>
+          </div>
+          <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
+            <Award size={24} />
+          </div>
+        </div>
+
+        {/* Followers */}
+        <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-5 flex items-center justify-between shadow-sm">
+          <div>
+            <p className="text-xs text-gray-400 font-medium">Toplam Takipçi</p>
+            <p className="text-3xl font-extrabold text-white mt-1">128K</p>
+            <span className="text-[11px] text-green-400 font-semibold flex items-center gap-1 mt-1">
+              <TrendingUp size={12} /> +12% bu ay
+            </span>
+          </div>
+          <div className="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
+            <Users size={24} />
+          </div>
+        </div>
+
+        {/* Impressions */}
+        <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-5 flex items-center justify-between shadow-sm">
+          <div>
+            <p className="text-xs text-gray-400 font-medium">Toplam Görüntülenme</p>
+            <p className="text-3xl font-extrabold text-white mt-1">4.2M</p>
+            <span className="text-[11px] text-green-400 font-semibold flex items-center gap-1 mt-1">
+              <TrendingUp size={12} /> +18% artış
+            </span>
+          </div>
+          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+            <Eye size={24} />
+          </div>
+        </div>
+
+        {/* Engagement Rate */}
+        <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-5 flex items-center justify-between shadow-sm">
+          <div>
+            <p className="text-xs text-gray-400 font-medium">Etkileşim Oranı</p>
+            <p className="text-3xl font-extrabold text-white mt-1">%8.7</p>
+            <span className="text-[11px] text-green-400 font-semibold flex items-center gap-1 mt-1">
+              <TrendingUp size={12} /> Sektör ort. x2.1
+            </span>
+          </div>
+          <div className="w-12 h-12 rounded-2xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center font-bold">
+            <BarChart2 size={24} />
+          </div>
+        </div>
+
+      </div>
+
+      {/* Main Analysis Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+        
+        {/* Creator Lens Gauge & Breakdown */}
+        <div className="lg:col-span-5 bg-[#111827] border border-[#1e293b] rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="font-bold text-white text-base">Creator Ekonomik Skoru</h3>
+              <span className="text-xs bg-green-500/20 text-green-400 px-2.5 py-1 rounded-full font-bold">
+                İyi Bir Performans! 🚀
+              </span>
+            </div>
+
+            {/* Circular SVG Gauge */}
+            <div className="flex items-center justify-center my-4">
+              <div className="relative w-36 h-36">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                  <path
+                    className="text-gray-800"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3.2"
+                  />
+                  <path
+                    className="text-blue-500"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3.2"
+                    strokeDasharray="81, 100"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-4xl font-extrabold text-white tracking-tight">81</span>
+                  <span className="text-[11px] text-gray-400 font-semibold">/ 100 PUAN</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Breakdown Bars */}
+            <div className="space-y-3.5 mt-6">
+              {scoreComponents.map((item) => (
+                <div key={item.label}>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-gray-300 font-medium">{item.label}</span>
+                    <span className="font-bold text-white">{item.score}/100</span>
+                  </div>
+                  <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                    <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.score}%` }}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-[10px] text-gray-500 text-center mt-6 pt-4 border-t border-gray-800">
+            Bu skor yapay zeka modelinin organik etkileşim ve güvenilirlik tahminidir.
+          </p>
+        </div>
+
+        {/* 30-Day Trend Chart & Quick Actions */}
+        <div className="lg:col-span-7 flex flex-col gap-6">
+          
+          {/* Performance Chart */}
+          <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div className="flex justify-between items-center mb-6">
+              <div>
+                <h3 className="font-bold text-white text-base">Performans (Son 30 Gün)</h3>
+                <p className="text-xs text-gray-400">Görüntülenme ve etkileşim korelasyonu</p>
+              </div>
+              <div className="flex gap-4">
+                <span className="text-xs text-blue-400 flex items-center gap-1.5 font-medium">
+                  <div className="w-2 h-2 rounded-full bg-blue-400"></div> Görüntülenme
+                </span>
+                <span className="text-xs text-purple-400 flex items-center gap-1.5 font-medium">
+                  <div className="w-2 h-2 rounded-full bg-purple-400"></div> Etkileşim
+                </span>
+              </div>
+            </div>
+
+            {/* Line SVG Visualization */}
+            <div className="h-44 w-full relative my-2">
+              <svg className="w-full h-full overflow-visible" viewBox="0 0 400 120" preserveAspectRatio="none">
+                {/* Grid Lines */}
+                <line x1="0" y1="20" x2="400" y2="20" stroke="#1e293b" strokeDasharray="4,4" />
+                <line x1="0" y1="60" x2="400" y2="60" stroke="#1e293b" strokeDasharray="4,4" />
+                <line x1="0" y1="100" x2="400" y2="100" stroke="#1e293b" strokeDasharray="4,4" />
+
+                {/* Line 1 (Impressions - Blue) */}
                 <path
-                  className="text-gray-700"
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  d="M 0 90 Q 70 65, 130 75 T 260 30 T 340 45 T 400 15"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#3B82F6"
                   strokeWidth="3"
-                  strokeDasharray="100, 100"
+                  strokeLinecap="round"
                 />
+
+                {/* Line 2 (Engagement - Purple) */}
                 <path
-                  className="text-green-500"
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  d="M 0 105 Q 70 95, 130 90 T 260 60 T 340 70 T 400 45"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#A855F7"
                   strokeWidth="3"
-                  strokeDasharray="81, 100"
+                  strokeLinecap="round"
                 />
               </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-4xl font-bold text-white">81</span>
-                <span className="text-xs text-gray-400">/100</span>
-              </div>
+            </div>
+
+            <div className="flex justify-between text-[11px] text-gray-500 pt-3 border-t border-gray-800">
+              <span>1 Ağu</span>
+              <span>8 Ağu</span>
+              <span>15 Ağu</span>
+              <span>22 Ağu</span>
+              <span>30 Ağu</span>
             </div>
           </div>
-          <div className="mt-4 text-center">
-            <span className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-medium">İyi bir performans! 🚀</span>
+
+          {/* Quick Actions Panel */}
+          <div className="bg-[#111827] border border-[#1e293b] rounded-3xl p-5">
+            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Hızlı İşlemler</h4>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <Link to="/revenue" className="flex flex-col items-center gap-2 p-3 bg-[#161F30] hover:bg-blue-600/20 border border-gray-800 rounded-2xl transition-colors text-center group">
+                <DollarSign size={18} className="text-green-400 group-hover:scale-110 transition-transform" />
+                <span className="text-xs text-gray-300 font-medium">Gelir Raporu</span>
+              </Link>
+
+              <Link to="/brand-matches" className="flex flex-col items-center gap-2 p-3 bg-[#161F30] hover:bg-purple-600/20 border border-gray-800 rounded-2xl transition-colors text-center group">
+                <Briefcase size={18} className="text-purple-400 group-hover:scale-110 transition-transform" />
+                <span className="text-xs text-gray-300 font-medium">Yeni İşbirliği</span>
+              </Link>
+
+              <Link to="/campaign-valuation" className="flex flex-col items-center gap-2 p-3 bg-[#161F30] hover:bg-blue-600/20 border border-gray-800 rounded-2xl transition-colors text-center group">
+                <Award size={18} className="text-blue-400 group-hover:scale-110 transition-transform" />
+                <span className="text-xs text-gray-300 font-medium">Değerleme</span>
+              </Link>
+
+              <Link to="/settings" className="flex flex-col items-center gap-2 p-3 bg-[#161F30] hover:bg-gray-700/40 border border-gray-800 rounded-2xl transition-colors text-center group">
+                <Sparkles size={18} className="text-yellow-400 group-hover:scale-110 transition-transform" />
+                <span className="text-xs text-gray-300 font-medium">AI Ayarları</span>
+              </Link>
+            </div>
           </div>
-          <p className="text-[10px] text-gray-500 text-center mt-4">Bu skor yapay zeka tahminidir ve piyasa değerinin garantisi değildir.</p>
+
         </div>
 
-        {/* Value Estimate & Reach */}
-        <div className="flex flex-col gap-6">
-          <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-6 flex-1 flex flex-col justify-center">
-            <h3 className="text-gray-400 text-sm mb-2">Aylık Tahmini Değer</h3>
-            <p className="text-2xl font-bold text-white">₺18.000 - ₺25.000</p>
-            <p className="text-xs text-green-400 mt-2 flex items-center gap-1">Güven: %82</p>
-          </div>
-          <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-6 flex-1 flex flex-col justify-center">
-            <h3 className="text-gray-400 text-sm mb-2">Toplam Takipçi</h3>
-            <p className="text-2xl font-bold text-white">245K</p>
-            <p className="text-xs text-green-400 mt-2 flex items-center gap-1"><TrendingUp size={12} /> +12%</p>
-          </div>
-        </div>
-
-        {/* Score Breakdown */}
-        <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-6">
-          <h3 className="text-gray-300 font-medium mb-6">Skor Bileşenleri</h3>
-          <div className="space-y-4 text-sm">
-            {[
-              { label: 'Kitle Kalitesi', score: 86, color: 'bg-blue-500' },
-              { label: 'Etkileşim Kalitesi', score: 78, color: 'bg-green-500' },
-              { label: 'İçerik Kalitesi', score: 91, color: 'bg-purple-500' },
-              { label: 'Marka Uyumu', score: 75, color: 'bg-yellow-500' },
-              { label: 'Kitle Tutarlılığı', score: 80, color: 'bg-cyan-500' },
-            ].map((item) => (
-              <div key={item.label}>
-                 <div className="flex justify-between mb-1">
-                   <span className="text-gray-400">{item.label}</span>
-                   <span className="font-medium text-white">{item.score}/100</span>
-                 </div>
-                 <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                   <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.score}%` }}></div>
-                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Performance Chart Placeholder */}
-        <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-gray-300 font-medium">Performans (7 Gün)</h3>
-            <div className="flex gap-4">
-              <span className="text-xs text-blue-400 flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-blue-400"></div> Görüntülenme</span>
-              <span className="text-xs text-purple-400 flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-purple-400"></div> Etkileşim</span>
-            </div>
-          </div>
-          <div className="h-48 border-b border-l border-gray-700 flex items-end justify-between p-2 pb-0">
-             {/* Mock Chart lines */}
-             <div className="w-full h-full relative">
-                <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                  <polyline fill="none" stroke="#3B82F6" strokeWidth="2" points="0,80 20,60 40,70 60,30 80,40 100,10" />
-                  <polyline fill="none" stroke="#8B5CF6" strokeWidth="2" points="0,90 20,85 40,88 60,60 80,65 100,50" />
-                </svg>
-             </div>
-          </div>
-          <div className="flex justify-between mt-4">
-            <div>
-              <p className="text-gray-400 text-xs">Görüntülenme</p>
-              <p className="text-white font-medium">1.2M <span className="text-green-500 text-xs">+18%</span></p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-xs">Etkileşim</p>
-              <p className="text-white font-medium">124K <span className="text-green-500 text-xs">+24%</span></p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-xs">Etkileşim Oranı</p>
-              <p className="text-white font-medium">%10.3 <span className="text-green-500 text-xs">+2.1%</span></p>
-            </div>
-          </div>
-        </div>
-
-        {/* AI Brand Matches Preview */}
-        <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-6 flex flex-col">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-gray-300 font-medium">Sizin İçin AI ile Eşleşen Markalar</h3>
-          </div>
-          
-          <div className="space-y-4 flex-1">
-             <div className="bg-[#1e293b]/50 p-4 rounded-lg flex items-center gap-4 border border-[#1e293b]">
-               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">T</div>
-               <div className="flex-1">
-                 <h4 className="text-white font-medium">TeknoMark Teknoloji</h4>
-                 <p className="text-gray-400 text-xs">Yeni Akıllı Saat Lansmanı</p>
-               </div>
-               <div className="text-right">
-                 <div className="text-green-400 font-bold text-lg">%94</div>
-                 <div className="text-gray-500 text-[10px]">Eşleşme</div>
-               </div>
-             </div>
-
-             <div className="bg-[#1e293b]/50 p-4 rounded-lg flex items-center gap-4 border border-[#1e293b]">
-               <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center font-bold text-white">E</div>
-               <div className="flex-1">
-                 <h4 className="text-white font-medium">EduPlus Platformu</h4>
-                 <p className="text-gray-400 text-xs">Eğitim - Online Kurslar</p>
-               </div>
-               <div className="text-right">
-                 <div className="text-green-400 font-bold text-lg">%88</div>
-                 <div className="text-gray-500 text-[10px]">Eşleşme</div>
-               </div>
-             </div>
-          </div>
-          
-          <button className="w-full mt-4 bg-primary/10 hover:bg-primary/20 text-primary py-3 rounded-lg font-medium transition-colors">
-            Daha Fazla Kampanya Keşfet
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
