@@ -2,7 +2,7 @@ import { TrendingUp, Sparkles } from 'lucide-react';
 
 export default function CreatorLens() {
   return (
-    <div className="flex-1 overflow-y-auto bg-background p-6">
+    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-background p-6 sm:p-8 max-w-7xl mx-auto w-full">
       
       <div className="flex justify-between items-center mb-8">
         <div>

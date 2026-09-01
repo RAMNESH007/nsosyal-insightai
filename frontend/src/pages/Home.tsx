@@ -1,101 +1,112 @@
-import { Image, Video, BarChart2, Smile, MoreHorizontal, MessageCircle, Heart, Share, Bookmark, Sparkles, Send } from 'lucide-react';
+import { Image, Video, BarChart2, Smile, MoreHorizontal, MessageCircle, Heart, Share2, Bookmark, Sparkles, Send, Plus } from 'lucide-react';
 import FeedDNAChart from '../components/FeedDNAChart';
 
 export default function Home() {
   return (
-    <div className="flex-1 flex overflow-hidden">
-      {/* Middle Column - Feed */}
-      <div className="flex-1 max-w-3xl border-r border-[#1e293b] flex flex-col overflow-y-auto">
+    <div className="flex-1 flex w-full h-full overflow-hidden">
+      {/* Middle Column - Feed (Smooth minimal scroll, perfectly fills central area) */}
+      <div className="flex-1 min-w-0 border-r border-[#1e293b] flex flex-col h-full overflow-y-auto scrollbar-minimal">
         
         {/* Top Header */}
-        <div className="sticky top-0 bg-[#0B0F19]/90 backdrop-blur-sm z-10 p-4 border-b border-[#1e293b] flex gap-4">
-          <div className="flex-1 bg-[#1e293b] rounded-full flex items-center px-4 py-2">
+        <div className="sticky top-0 bg-[#0B0F19]/90 backdrop-blur-md z-10 p-4 border-b border-[#1e293b] flex gap-4 items-center">
+          <div className="flex-1 bg-[#1e293b]/70 border border-gray-800 rounded-full flex items-center px-4 py-2">
             <span className="text-gray-400 text-sm">Ara NSosyal'de...</span>
           </div>
-          <div className="flex gap-4 items-center">
-            <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
-            <span className="font-medium text-sm">Ahmet</span>
+          <div className="flex gap-3 items-center flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity">
+            <div className="w-9 h-9 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-full flex items-center justify-center font-bold text-sm text-white shadow-md">
+              A
+            </div>
+            <span className="font-medium text-sm hidden sm:inline text-gray-200">Ahmet</span>
           </div>
         </div>
 
-        <div className="p-4 space-y-6">
+        <div className="p-4 sm:p-6 space-y-6 max-w-4xl mx-auto w-full">
           {/* Stories */}
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-none">
             {['Hikaye Ekle', 'zeynep.tech', 'mert.yildiz', 'bilim.ve.ozel', 'oguzhan.tr'].map((story, i) => (
-              <div key={i} className="flex flex-col items-center gap-2 min-w-[72px]">
-                <div className={`w-16 h-16 rounded-full border-2 p-0.5 ${i === 0 ? 'border-dashed border-gray-500' : 'border-primary'}`}>
-                  <div className="w-full h-full bg-gray-700 rounded-full flex items-center justify-center">
-                    {i === 0 ? <PlusCircle className="text-gray-400" /> : <div className="w-full h-full bg-gray-500 rounded-full"></div>}
+              <div key={i} className="flex flex-col items-center gap-2 min-w-[72px] cursor-pointer group">
+                <div className={`w-16 h-16 rounded-full border-2 p-0.5 transition-transform duration-200 group-hover:scale-105 ${i === 0 ? 'border-dashed border-gray-500' : 'border-primary shadow-sm shadow-blue-500/30'}`}>
+                  <div className="w-full h-full bg-gray-800 rounded-full flex items-center justify-center overflow-hidden">
+                    {i === 0 ? (
+                      <Plus className="text-gray-400 w-6 h-6" />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-indigo-900/60 to-gray-800 flex items-center justify-center text-xs font-semibold text-gray-300">
+                        {story.charAt(0).toUpperCase()}
+                      </div>
+                    )}
                   </div>
                 </div>
-                <span className="text-xs text-gray-400 truncate w-full text-center">{story}</span>
+                <span className="text-xs text-gray-400 truncate w-full text-center group-hover:text-gray-200 transition-colors">{story}</span>
               </div>
             ))}
           </div>
 
           {/* New Post Input */}
-          <div className="bg-[#111827] rounded-xl p-4 border border-[#1e293b]">
+          <div className="bg-[#111827] rounded-2xl p-4 sm:p-5 border border-[#1e293b] shadow-sm">
             <div className="flex gap-3 mb-4">
-              <div className="w-10 h-10 bg-gray-600 rounded-full flex-shrink-0"></div>
+              <div className="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0 shadow-md">
+                A
+              </div>
               <input 
                 type="text" 
                 placeholder="Ne düşünüyorsun, Ahmet?"
-                className="bg-transparent border-none focus:outline-none text-gray-200 w-full"
+                className="bg-transparent border-none focus:outline-none text-gray-200 w-full placeholder-gray-500 text-sm sm:text-base"
               />
             </div>
-            <div className="flex justify-between items-center pt-3 border-t border-[#1e293b]">
-              <div className="flex gap-4 text-gray-400">
-                <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><Image size={18} /> Fotoğraf</button>
-                <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><Video size={18} /> Video</button>
-                <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><BarChart2 size={18} /> Anket</button>
-                <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><Smile size={18} /> Duygu</button>
+            <div className="flex flex-wrap justify-between items-center gap-3 pt-3 border-t border-[#1e293b]">
+              <div className="flex gap-2 sm:gap-4 text-gray-400">
+                <button className="flex items-center gap-1.5 hover:text-primary transition-colors text-xs sm:text-sm px-2 py-1 rounded-lg hover:bg-gray-800/50"><Image size={17} /> Fotoğraf</button>
+                <button className="flex items-center gap-1.5 hover:text-primary transition-colors text-xs sm:text-sm px-2 py-1 rounded-lg hover:bg-gray-800/50"><Video size={17} /> Video</button>
+                <button className="flex items-center gap-1.5 hover:text-primary transition-colors text-xs sm:text-sm px-2 py-1 rounded-lg hover:bg-gray-800/50"><BarChart2 size={17} /> Anket</button>
+                <button className="flex items-center gap-1.5 hover:text-primary transition-colors text-xs sm:text-sm px-2 py-1 rounded-lg hover:bg-gray-800/50"><Smile size={17} /> Duygu</button>
               </div>
-              <button className="bg-primary hover:bg-blue-600 text-white px-6 py-1.5 rounded-full font-medium transition-colors">
+              <button className="bg-primary hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-md shadow-blue-500/20 active:scale-95">
                 Paylaş
               </button>
             </div>
           </div>
 
           {/* Feed Post */}
-          <div className="bg-[#111827] rounded-xl p-4 border border-[#1e293b]">
+          <div className="bg-[#111827] rounded-2xl p-4 sm:p-5 border border-[#1e293b] shadow-sm">
             <div className="flex justify-between items-start mb-3">
               <div className="flex gap-3">
-                 <div className="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center">
-                   <div className="w-6 h-6 border-2 border-current rounded-sm"></div>
+                 <div className="w-11 h-11 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                   TG
                  </div>
                  <div>
                    <div className="flex items-center gap-2">
-                     <span className="font-bold">Teknoloji Gündemi</span>
-                     <span className="text-gray-500 text-sm">@teknolojigundemi · 2s</span>
+                     <span className="font-bold text-gray-100">Teknoloji Gündemi</span>
+                     <span className="text-gray-500 text-xs sm:text-sm">@teknolojigundemi · 2s</span>
                    </div>
-                   <p className="text-gray-300 mt-1 text-sm">
+                   <p className="text-gray-300 mt-1 text-sm leading-relaxed">
                      Yapay zeka destekli yeni çipler, mobil cihazlarda devrim yaratacak.
                    </p>
-                   <p className="text-primary text-sm mt-1">#teknoloji #yapayzeka</p>
+                   <p className="text-primary text-sm mt-1 font-medium">#teknoloji #yapayzeka</p>
                  </div>
               </div>
-              <button className="text-gray-500 hover:text-white"><MoreHorizontal size={20} /></button>
+              <button className="text-gray-500 hover:text-white p-1 rounded-lg hover:bg-gray-800 transition-colors"><MoreHorizontal size={20} /></button>
             </div>
 
-            <div className="rounded-xl overflow-hidden mt-3 h-64 bg-gray-800 border border-[#1e293b]">
+            <div className="rounded-xl overflow-hidden mt-3 h-64 sm:h-72 bg-gray-800/80 border border-[#1e293b]">
                {/* Placeholder for AI chip image */}
-               <div className="w-full h-full bg-gradient-to-br from-blue-900/40 to-slate-900 flex items-center justify-center text-gray-500">
-                  [Görsel]
+               <div className="w-full h-full bg-gradient-to-br from-blue-950/40 via-slate-900 to-indigo-950/40 flex flex-col items-center justify-center text-gray-500 gap-2">
+                  <Sparkles size={28} className="text-blue-400/50" />
+                  <span className="text-xs text-gray-400">[Görsel / AI Çip Mimarisi]</span>
                </div>
             </div>
 
-            <div className="flex justify-between items-center mt-4 text-gray-400">
-              <button className="flex items-center gap-2 hover:text-primary"><MessageCircle size={18} /> 128</button>
-              <button className="flex items-center gap-2 hover:text-green-500"><Share size={18} /> 256</button>
-              <button className="flex items-center gap-2 text-red-500"><Heart size={18} fill="currentColor" /> 1.2K</button>
-              <button className="flex items-center gap-2 hover:text-primary"><Bookmark size={18} /></button>
+            <div className="flex justify-between items-center mt-4 text-gray-400 pt-2 border-t border-gray-800/60">
+              <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><MessageCircle size={18} /> 128</button>
+              <button className="flex items-center gap-2 hover:text-green-500 transition-colors text-sm"><Share2 size={18} /> 256</button>
+              <button className="flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors text-sm"><Heart size={18} fill="currentColor" /> 1.2K</button>
+              <button className="flex items-center gap-2 hover:text-primary transition-colors text-sm"><Bookmark size={18} /></button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Right Column - Explainability & Tools */}
-      <div className="w-[350px] bg-[#0B0F19] p-4 flex flex-col gap-4 overflow-y-auto hidden xl:flex">
+      {/* Right Column - Explainability & Tools (Clean full-height side panel) */}
+      <div className="w-[370px] 2xl:w-[410px] bg-[#0B0F19] p-4 2xl:p-5 flex flex-col gap-4 overflow-y-auto scrollbar-minimal hidden lg:flex flex-shrink-0 h-full border-l border-[#1e293b]/50">
         
         {/* Neden bunu görüyorum? */}
         <div className="bg-[#111827] rounded-xl border border-[#1e293b] p-4">
@@ -217,16 +228,5 @@ export default function Home() {
 
       </div>
     </div>
-  );
-}
-
-// Add a dummy PlusCircle component to avoid importing errors
-function PlusCircle({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <circle cx="12" cy="12" r="10"></circle>
-      <line x1="12" y1="8" x2="12" y2="16"></line>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-    </svg>
   );
 }

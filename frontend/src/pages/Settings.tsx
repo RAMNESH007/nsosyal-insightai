@@ -2,7 +2,7 @@ import { Settings as SettingsIcon, Sliders, Shield, Bell } from 'lucide-react';
 
 export default function Settings() {
   return (
-    <div className="flex-1 overflow-y-auto bg-background p-6 lg:p-10 max-w-4xl mx-auto">
+    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-background p-6 lg:p-10 max-w-4xl mx-auto w-full">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
           <SettingsIcon className="text-primary" /> Ayarlar

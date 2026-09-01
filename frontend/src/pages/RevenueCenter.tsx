@@ -2,7 +2,7 @@ import { DollarSign, PieChart, TrendingUp, Users, Award } from 'lucide-react';
 
 export default function RevenueCenter() {
   return (
-    <div className="flex-1 overflow-y-auto bg-background p-6 lg:p-10 max-w-6xl mx-auto">
+    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-background p-6 lg:p-10 max-w-6xl mx-auto w-full">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">

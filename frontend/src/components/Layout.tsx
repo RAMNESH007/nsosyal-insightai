@@ -21,11 +21,11 @@ export default function Layout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="flex h-screen bg-[#0B0F19] text-white overflow-hidden">
+    <div className="flex h-screen w-full bg-[#0B0F19] text-white overflow-hidden">
       {/* Left Sidebar */}
-      <aside className="w-64 border-r border-[#1e293b] flex flex-col hidden lg:flex flex-shrink-0 overflow-y-auto">
-        <div className="p-4 sticky top-0 bg-[#0B0F19] z-10 flex items-center gap-3 mb-2">
-          <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center font-bold text-white">N</div>
+      <aside className="w-64 border-r border-[#1e293b] flex flex-col hidden lg:flex flex-shrink-0 overflow-y-auto scrollbar-none select-none">
+        <div className="p-4 sticky top-0 bg-[#0B0F19]/95 backdrop-blur z-10 flex items-center gap-3 mb-2">
+          <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">N</div>
           <span className="text-xl font-bold tracking-wide">NSOSYAL</span>
         </div>
         

@@ -2,7 +2,7 @@ import { AlertTriangle, CheckCircle, Clock, Shield } from 'lucide-react';
 
 export default function CrisisVerification() {
   return (
-    <div className="flex-1 overflow-y-auto bg-background p-6 lg:p-10 max-w-5xl mx-auto">
+    <div className="flex-1 overflow-y-auto scrollbar-minimal bg-background p-6 lg:p-10 max-w-5xl mx-auto w-full">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
           Kriz Doğrulama Modu <span className="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded ml-2 font-medium">AKTİF</span>
