@@ -1,4 +1,5 @@
 import { Image, Video, BarChart2, Smile, MoreHorizontal, MessageCircle, Heart, Share2, Bookmark, Sparkles, Send, Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import FeedDNAChart from '../components/FeedDNAChart';
 
 export default function Home() {
